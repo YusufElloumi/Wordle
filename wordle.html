@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wordle</title>
+    <link rel="stylesheet" href="wordle.css" />
+  </head>
+  <body>
+    
+      <h1>WORDLE</h1>
+
+      <div class="menu" id="main-menu">
+        <button id="new-game" onclick="open_mode_menu()">New Game</button>
+        <button id="settings" onclick="open_settings_menu()">Settings</button>
+      </div>
+
+      <div class="menu" id="mode-menu" style="display: none;">
+        <div>
+          <h2>Study Mode:</h2>
+        <button onclick="start_game('bio')">Biology</button>
+        <button onclick="start_game('chem')">Chemistry</button>
+        <button onclick="start_game('physics')">Physics</button>
+        </div>
+        <div>
+          <h2>Regular Mode:</h2>
+        <button onclick="start_game('regular')">Regular</button>
+        </div>
+        <div>
+        <button onclick="close_mode_menu()">Close</button>
+        </div>
+      </div>
+
+      <div class="menu" id="settings-menu" style="display: none;">
+        <h2>Settings</h2>
+        <img src="settings.png"/>
+        <button onclick="close_mode_menu()">Close</button>
+      </div>
+
+      <div id="game-container" style="display: none;"> 
+        <div id="game-board">
+          <!-- Game board will be dynamically generated here -->
+           <ul id="guesses">
+            <li id="guess 1"></li>
+            <li id="guess 2"></li>
+            <li id="guess 3"></li>
+            <li id="guess 4"></li>  
+            <li id="guess 5"></li>
+            <li id="guess 6"></li>
+           </ul>
+        </div>
+        <div id="keyboard">
+          <input type="text" id="guess-input"/>
+          <button id="submit-guess" onclick="submitGuess()">Submit Guess</button>
+        </div>
+        <div id="game-info">
+          <p>Guess the word!</p>
+          <p>Press Enter to submit your guess.</p>
+        </div>
+      </div>
+
+      <div class="menu" id="game-over" style="display: none;">
+        <h2 id="win?"></h2>
+        <p id="win_message"></p>
+        <p id="job-review"></p>
+        <button onclick="open_mode_menu()">Play Again</button>
+
+      <script src="wordle.js"></script>
+  </body>
+</html>

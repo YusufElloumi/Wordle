@@ -7,31 +7,34 @@ let allowed_guesses = loadAllowedGuesses();
 
 function open_mode_menu() {
   document.getElementById('main-menu').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
   document.getElementById('game-over').style.display = 'none';
   document.getElementById('settings-menu').style.display = 'none';
+  document.getElementById('game-container').style.display = 'none';
   document.getElementById('mode-menu').style.display = 'block';
+  resetGame();
 }
 
 function close_mode_menu() {
   document.getElementById('mode-menu').style.display = 'none';
   document.getElementById('settings-menu').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
   document.getElementById('game-over').style.display = 'none';
+  document.getElementById('game-container').style.display = 'none';
   document.getElementById('main-menu').style.display = 'block';
 }
 
 function open_settings_menu() {
   document.getElementById('main-menu').style.display = 'none';
   document.getElementById('mode-menu').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
   document.getElementById('game-over').style.display = 'none';
+  document.getElementById('game-container').style.display = 'none';
   document.getElementById('settings-menu').style.display = 'block';
 }
 
 function open_win_menu() {
-  document.getElementById('main-menu').style.display = 'none';
-  document.getElementById('mode-menu').style.display = 'none';
-  document.getElementById('settings-menu').style.display = 'none';
-  document.getElementById('main-menu').style.display = 'none';
-  document.getElementById('game-container').style.display = 'none';
+  document.getElementById('overlay').style.display = 'block';
   document.getElementById('game-over').style.display = 'block';
   document.getElementById('win?').innerText = "YOU WIN";
   document.getElementById('job-review').innerText = "GOOD BOY!";
@@ -39,14 +42,17 @@ function open_win_menu() {
 }
 
 function open_lose_menu() {
-  document.getElementById('main-menu').style.display = 'none';
-  document.getElementById('mode-menu').style.display = 'none';
-  document.getElementById('settings-menu').style.display = 'none';
-  document.getElementById('main-menu').style.display = 'none';
-  document.getElementById('game-container').style.display = 'none';
+  document.getElementById('overlay').style.display = 'block';
   document.getElementById('game-over').style.display = 'block';
   document.getElementById('win?').innerText = "YOU DIED";
+  document.getElementById('job-review').innerText = "";
   document.getElementById('win_message').innerText = `The word was ${word}`;
+}
+
+// When closing the popup, also hide the overlay
+function close_game_over() {
+  document.getElementById('overlay').style.display = 'none';
+  document.getElementById('game-over').style.display = 'none';
 }
 
 
@@ -122,15 +128,11 @@ function submitGuess() {
 
 
   if (guess_text === word) {
-    currentGuess = 0;
-    guess_skeleton = [0, 0, 0, 0, 0];
     open_win_menu()
     resetGame();
     return;
   }
   else if (currentGuess >= maxGuesses) {
-    currentGuess = 0;
-    guess_skeleton = [0, 0, 0, 0, 0];
     open_lose_menu()
     resetGame();
     return;

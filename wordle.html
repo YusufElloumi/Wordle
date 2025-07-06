@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="wordle.css" />
   </head>
   <body>
-    
+      
       <h1>WORDLE</h1>
 
       <div class="menu" id="main-menu">
@@ -25,14 +25,14 @@
         <button onclick="start_game('regular')">Regular</button>
         </div>
         <div>
-        <button onclick="close_mode_menu()">Close</button>
+        <button  onclick="close_mode_menu()">Close</button>
         </div>
       </div>
 
       <div class="menu" id="settings-menu" style="display: none;">
         <h2>Settings</h2>
         <img src="settings.png"/>
-        <button onclick="close_mode_menu()">Close</button>
+        <button  onclick="close_mode_menu()">Close</button>
       </div>
 
       <div id="game-container" style="display: none;"> 
@@ -54,15 +54,16 @@
         <div id="game-info">
           <p>Guess the word!</p>
           <p>Press Enter to submit your guess.</p>
-        </div>
+          <button class="close-btn" onclick="open_mode_menu()">Close</button>
+        </div>  
       </div>
-
+      <div id="overlay" style="display:none;"></div>
       <div class="menu" id="game-over" style="display: none;">
         <h2 id="win?"></h2>
         <p id="win_message"></p>
         <p id="job-review"></p>
         <button onclick="open_mode_menu()">Play Again</button>
-
+      </div>
       <script src="wordle.js"></script>
   </body>
 </html>

@@ -96,7 +96,7 @@ async function start_game(mode) {
 function submitGuess() {
   const inputID = document.getElementById('guess-input');
   const guess_listID = document.getElementById('guesses');
-  const guess_text = inputID.value.trim();
+  const guess_text = inputID.value.trim().toLowerCase();
 
   if (!allowed_guesses.includes(guess_text)) {
     alert("Invalid guess. Please enter a valid word.");
